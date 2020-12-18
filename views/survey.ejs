@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+		
+		<link rel="stylesheet" type="text/css" href="views/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="views/fonts/iconic/css/material-design-iconic-font.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="views/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="views/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="views/vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="views/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="views/vendor/daterangepicker/daterangepicker.css">
+
+		<link rel="stylesheet" type="text/css" href="views/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="views/css/util.css" />
+
+		<!-- Favicon -->
+    	<link rel="icon" href="views/img/favicon.ico">
+
+		<title>Fidelity</title>
+	</head>
+	<body>
+
+		<header>
+			<nav>
+				<ul class="nav-links">
+					<div class="logo-container">
+						<a href="/"><img class="img-bordel" src="views/img/logo.png" alt="Logo" /></a>
+					</div>
+					<li><a class="nav-link" href="#"> </a></li>
+					<li><a class="nav-link" href="#"> </a></li>
+					<li><a class="nav-link" onclick="document.getElementById('contactForm').style.visibility='visible';document.getElementById('contactForm').style.animation='drop 1.5s ease'" href="#">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<div class="container-contact100" id="contactForm">
+				<div class="wrap-contact100">
+					<form class="contact100-form validate-form" action="/sendMail" method="post">
+						<span class="contact100-form-title">
+							Contactez nous
+						</span>
+
+						<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+							<input class="input100" type="text" id="name" name="name" placeholder="Prénom Nom">
+							<span class="focus-input100"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x">
+							<input class="input100" type="text" id="email" name="email" placeholder="Email">
+							<span class="focus-input100"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+							<textarea class="input100" id="message" name="message" placeholder="Votre message..."></textarea>
+							<span class="focus-input100"></span>
+						</div>
+
+						<div class="container-contact100-form-btn">
+							<button class="contact100-form-btn" id="sendMail" name="sendMail" type="submit">
+								Envoyez nous un email
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<section class="lancement">
+				<div class="instruction" id="instruction">
+					<div class="survey-text">
+						<h1>Questionnaire</h1>
+						<br />
+						<p>
+							Vous allez commencer à répondre à un questionnaire d'enquête 
+							qui nous permettra de mieux adapter notre produit à vos exigences. <br />
+							L'équipe de Fidelity n'attend plus que vous pour commencer ! 
+						</p>
+					</div>
+					<div class="cta">
+						<a id="commencer" onclick="document.getElementById('instruction').style.display='none';document.getElementById('userEndForm').style.display='flex';"><input class="cta-start" type="submit" value="Commencer" /></a>
+					</div>
+				</div>
+					<div class="questions" id="userEndForm">
+						<form class="userEndForm-survey-q" id="userFormContactQ">
+							<h1>Commencez par nous dire qui vous êtes ! </h1>
+		
+							<div class="userEndFormwrap-input100">
+								<input class="input100" type="text" id="prenom" name="prenom" placeholder="Prénom">
+							</div>
+		
+							<div class="userEndFormwrap-input100" >
+								<input class="input100" type="text" id="nom" name="nom" placeholder="Nom">
+							</div>
+							
+							<div class="userEndFormwrap-input100-other">
+								<input  type="checkbox" id="homme" name="homme">
+								<label for="homme" class = "userEnd-checkbox">Homme</label>
+								
+								<input type="checkbox" id="femme" name="femme">
+								<label for="femme" class = "userEnd-checkbox">Femme</label>
+		
+								<input type="checkbox" id="autre" name="autre">
+								<label for="autre" class = "userEnd-checkbox">Autre...</label>
+							</div>
+		
+							<div class="userEndFormwrap-input100-other">
+								<label for="dateDeNaissance">Date de naissance : </label>
+								<input type="date" id="dateDeNaissance" name="trip-start" min="01-01-1900" max="31-12-3000">
+							</div>
+							
+							
+							<div class="userEndFormwrap-input100 validate-input" data-validate="S'il vous plait renseigner votre mail : example@mail.com">
+								<input class="input100" type="text" id="emailUser" name="emailUser" placeholder="Email">
+								<span class="userEndForm-focus-input100"></span>
+							</div>
+		
+							<div class="userEndFormwrap-input100">
+								<textarea class="input100" id="messageUser" name="message" placeholder="Vous pouvez nous laisser un message ici si vous le souhaitez..."></textarea>
+								<span class="userEndForm-focus-input100"></span>
+							</div>
+							<input id="valide" class="cta-start" onclick="getUserForm();document.getElementById('userEndForm').style.display='none';document.getElementById('questions-1').style.display='flex';document.getElementById('questions-1').style.animation='drop 1.5s ease';" value="Valider" />
+						</form>
+					</div>
+
+					<% Questions.forEach(function(questions) 
+					{ %>
+					<div class="questions" id="questions-<%= questions.qKey %>">
+						<div class="survey-q">
+							<h1>Question n°<%= questions.qKey %> / 15</h1>
+							<h2><%= questions.qName %> </h2>
+							<br />
+							<% for(let key in questions) 
+							{ 
+								if(questions[key] != null && questions[key] != questions.qName && questions[key] != questions.qKey && questions.qMultiple == null && questions.qKey != 15) 
+								{ %> 
+									<input class="cta-select-answer" onclick="changeClass.call(this);addOneAnswer('<%= questions.qKey %>', '<%= questions[key] %>');document.getElementById('questions-<%= questions.qKey %>').style.display='none';document.getElementById('questions-<%= questions.qKey + 1 %>').style.display='flex';document.getElementById('questions-<%= questions.qKey + 1 %>').style.animation='drop 1.5s ease';" id="<%= key %>" value="<%= questions[key] %>" type="submit" />
+								<%} 
+								else if (questions[key] != null && questions[key] != questions.qName && questions[key] != questions.qKey && questions.qMultiple != null) 
+								{
+									if (questions[key] != questions.qMultiple) { %><input class="cta-select-answer" onclick="changeClass.call(this);addMultiAnswer('<%= questions.qKey %>', '<%= questions[key] %>');" id="<%= key %>" value="<%= questions[key] %>" type="submit" /> <%}
+								}
+								else if (questions.qKey == 15 && questions[key] != null && questions[key] != questions.qName && questions[key] != questions.qKey)
+								{ %>
+									<input class="cta-select-answer" onclick="changeClass.call(this);addOneAnswer('<%= questions.qKey %>', '<%= questions[key] %>');" id="<%= key %>" value="<%= questions[key] %>" type="submit" />
+								<%} 
+							}
+							if (questions.qMultiple != null) { %> <div class="cta"><input onclick="document.getElementById('questions-<%= questions.qKey %>').style.display='none';document.getElementById('questions-<%= questions.qKey + 1 %>').style.display='flex';document.getElementById('questions-<%= questions.qKey + 1 %>').style.animation='drop 1.5s ease';" class="cta-start center-start" type="submit" value="Valider" /></div> <% } %> 
+						</div>
+					</div>
+					<% }); %>
+					<div class="endofForm" id="endofForm">
+						<div class="enForm" id="endForm">
+							<h1>Merci d'avoir répondu à notre questionnaire et à bientôt !</h1>
+						</div>
+					</div>
+			</section>
+	
+			<img class="big-circle" src="views/img/big-eclipse.svg" alt="" />
+			<img class="medium-circle" src="views/img/mid-eclipse.svg" alt="" />
+			<img class="small-circle" src="views/img/small-eclipse.svg" alt="" />
+		</main>
+
+
+		<script>
+			function changeClass () 
+			{
+				$(this).toggleClass('cta-start');
+			};
+	
+			let userF = new Object;
+			
+			function getUserForm()
+			{
+				userF['prenom'] = document.getElementById('prenom').value;
+				userF['nom'] = document.getElementById('nom').value;
+				userF['homme'] = document.getElementById('homme').value;
+				userF['femme'] = document.getElementById('femme').value;
+				userF['autre'] = document.getElementById('autre').value;
+				userF['dateDeNaissance'] = document.getElementById('dateDeNaissance').value;
+				userF['email'] = document.getElementById('emailUser').value;
+				userF['message'] = document.getElementById('messageUser').value;
+
+				console.log("User : ");
+				console.log(userF);
+			};
+			
+			let score = new Object;
+	
+			function addOneAnswer(key, answer)
+			{
+				score[key] = answer;	
+	
+				console.log(score)
+	
+				if (key == 15)
+				{
+					let question = 'questions-'
+					let questions = question.concat(key)
+
+					
+					const data = new Object;
+
+					console.log(userF);
+					console.log(score);
+
+					data ['userF'] = userF;
+					data ['score'] = score;
+
+					console.log(data);
+
+					$.ajax({
+						url: '/questionnaire',
+						type: "POST",
+						data: data
+					});
+	
+					document.getElementById(questions).style.display='none';
+					document.getElementById('endofForm').style.display='flex';
+					document.getElementById('endofForm').style.animation='drop 1.5s ease';
+				}
+			};
+	
+			function addMultiAnswer(key, answer)
+			{
+				if (score[key] == undefined)
+				{
+					score[key] = [];
+	
+					score[key].push(answer);
+				}
+				else
+				{
+					let index = score[key].indexOf(answer);
+					if(index > -1)
+					{
+						score[key].splice(index, 1);
+					}
+					else
+					{
+						score[key].push(answer);
+					}
+				}
+			};
+
+			Date.prototype.toDateInputValue = (function() {
+				var local = new Date(this);
+				local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+				return local.toJSON().slice(0,10);
+			});
+	
+			document.getElementById('dateDeNaissance').value = new Date().toDateInputValue();
+		</script>
+	</body>
+
+	<script src="views/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="views/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="views/vendor/bootstrap/js/popper.js"></script>
+	<script src="views/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="views/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="views/vendor/daterangepicker/moment.min.js"></script>
+	<script src="views/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="views/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="views/js/main.js"></script>
+</html>
