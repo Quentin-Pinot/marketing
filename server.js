@@ -20,12 +20,26 @@ const transporter = nodemailer.createTransport(
 let d = new Date();
 let date = `${d.getDay()}-${d.getMonth()}-${d.getYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}: `;    
 
+/*
 const {
     PORT = 32222,
     PGHOST = "localhost",
     PGUSER = "postgres",
     PGPASSWORD = "admin",
     PGDATABASE = "Fidelity",
+    PGPORT = "5432",
+    SESS_NAME = "sid",
+    SESS_SECRET = "raboule_le_fric",
+    SESS_LIFETIME = 24 * 60 * 60 * 1000 // 24h
+} = process.env;
+*/
+
+const {
+    PORT = 8080,
+    PGHOST = "ec2-34-192-173-173.compute-1.amazonaws.com",
+    PGUSER = "dyjxucfevhnuan",
+    PGPASSWORD = "3bca1dba4582e00c9ab1b537d2cb61ba35a07340a2dde8dff825f458a33cfda8",
+    PGDATABASE = "d23qjb8d66t6ip",
     PGPORT = "5432",
     SESS_NAME = "sid",
     SESS_SECRET = "raboule_le_fric",
