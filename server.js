@@ -33,6 +33,8 @@ const {
     SESS_LIFETIME = 24 * 60 * 60 * 1000 // 24h
 } = process.env;
 
+// todo : CHANGER LE CONST PROCCES.ENV
+
 /* 
 const {
     PORT = 8080,
