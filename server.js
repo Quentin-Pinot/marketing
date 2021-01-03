@@ -153,7 +153,13 @@ app.post('/questionnaire', (req, respo) =>
         {
             const idUser =  isNaN(parseInt(Object.values(response.rows[0]))) ? 1 : parseInt(Object.values(response.rows[0])) + 1;
 
-            pool.query("INSERT INTO users(\"idUsers\", \"surname\", \"name\", \"mail\", \"male\", \"woman\", \"other\", \"birthDate\", \"message\") VALUES('" + idUser + "', '" + answerUser.userF.prenom + "', '" + answerUser.userF.nom + "', '" + answerUser.userF.email + "', '" + answerUser.userF.homme + "', '" + answerUser.userF.femme + "', '" + answerUser.userF.autre + "', '" + answerUser.userF.dateDeNaissance + "', '" + answerUser.userF.message + "');", (err, resp) => 
+            let dateDeNaissance = answerUser.userF.dateDeNaissance == '' ? null : "'" + answerUser.userF.dateDeNaissance + "'";
+
+            let queryUser = "INSERT INTO users(\"idUsers\", \"surname\", \"name\", \"mail\", \"male\", \"woman\", \"other\", \"birthDate\", \"message\") VALUES('" + idUser + "', '" + answerUser.userF.prenom + "', '" + answerUser.userF.nom + "', '" + answerUser.userF.email + "', '" + answerUser.userF.homme + "', '" + answerUser.userF.femme + "', '" + answerUser.userF.autre + "', " + dateDeNaissance + ", '" + answerUser.userF.message + "');";
+
+            console.log(queryUser);
+
+            pool.query(queryUser, (err, resp) => 
             {
                 if(err)
                 {
@@ -161,7 +167,7 @@ app.post('/questionnaire', (req, respo) =>
                 }
                 else 
                 {
-                    console.log('Utilisateur : ' + answerUser.userF.email + 'ajouté');
+                    console.log('Utilisateur : ' + answerUser.userF.email + ' ajouté');
 
                         pool.connect((err, db, done) => 
                         {

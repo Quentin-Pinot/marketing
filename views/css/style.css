@@ -92,6 +92,7 @@ nav {
 }
 .questions {
 	text-align: center;
+	align-items: center;
 	display: none;
 	position: relative;
 	min-height: 80vh;
@@ -233,13 +234,62 @@ nav {
 	font-size: 16px;
 	border: none;
 	color: white;
-	/*margin: 30px 0px 0px 30px;*/
+	/* margin: 30px 0px 0px 30px; */
+}
+
+.cta-start-form {
+	background: #2189ff;
+	text-align: center;
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	border: none;
+	color: white;
+	/* margin: 30px 0px 0px 30px; */
+}
+
+.cta-start-multiple {
+	background: #2189ff;
+	text-align: center;
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	border: none;
+	color: white;
+	margin: 15px 0px 0px 15px;
 }
 
 .cta-select-answer {
 	border: 2px solid #2189ff;
-	background: transparent;
+	background: white;
 	color: #2189ff;
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	text-align: center;
+	margin: 15px 0px 0px 15px;
+}
+
+.cta-select-answer-multi {
+	border: 2px solid #2189ff;
+	background: white;
+	color: #2189ff;
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	text-align: center;
+	margin: 15px 0px 0px 15px;
+}
+
+
+.cta-select-answer-multi-after {
+	border: 2px solid #2189ff;
+	background: #2189ff;
+	color: white;
 	width: 150px;
 	height: 50px;
 	cursor: pointer;
@@ -404,13 +454,36 @@ nav {
 	line-height: 1.2;
   }
 
+  .input100-email {
+	display: flex;
+	width: 100%;
+	background: transparent;
+	font-size: 16px;
+	color: #4b2354;
+	line-height: 1.2;
+  }
+
+  .emailUser
+  {
+	  display: flex;
+  }
+
   input.input100 {
 	height: 62px;
 	padding: 0 20px 0 20px;
   }
   
-  
+  input.input100-email {
+	height: 62px;
+	padding: 0 20px 0 20px;
+  }
+
   textarea.input100 {
+	min-height: 199px;
+	padding: 19px 20px 0 23px;
+  }
+
+  textarea.input100-email {
 	min-height: 199px;
 	padding: 19px 20px 0 23px;
   }

@@ -36,7 +36,7 @@
 			<nav>
 				<ul class="nav-links">
 					<div class="logo-container">
-						<a href="/"><img class="img-bordel" src="https://fidelitycard.herokuapp.com/views/img/logoyollow.png" alt="Logo" /></a>
+						<a href="/"><img class="img-bordel" src="views/img/logoyollow.png" alt="logoyollow" /></a>
 					</div>
 					<li><a class="nav-link" href="#"> </a></li>
 					<li><a class="nav-link" href="#"> </a></li>
@@ -93,7 +93,7 @@
 					</div>
 				</div>
 					<div class="questions" id="userEndForm">
-						<form class="userEndForm-survey-q" id="userFormContactQ">
+						<form class="userEndForm-survey-q" id="userFormContactQ" onsubmit="return mySubmitFunction(event)">
 							<h1>Commencez par nous dire qui vous êtes ! </h1>
 		
 							<div class="userEndFormwrap-input100">
@@ -122,7 +122,7 @@
 							
 							
 							<div class="userEndFormwrap-input100 validate-input" data-validate="S'il vous plait renseigner votre mail : example@mail.com">
-								<input class="input100" type="text" id="emailUser" name="emailUser" placeholder="Email">
+								<input class="input100-email" type="email" id="emailUser" name="emailUser" placeholder="Email">
 								<span class="userEndForm-focus-input100"></span>
 							</div>
 		
@@ -130,7 +130,7 @@
 								<textarea class="input100" id="messageUser" name="message" placeholder="Vous pouvez nous laisser un message ici si vous le souhaitez..."></textarea>
 								<span class="userEndForm-focus-input100"></span>
 							</div>
-							<input id="valide" class="cta-start" onclick="getUserForm();document.getElementById('userEndForm').style.display='none';document.getElementById('questions-1').style.display='flex';document.getElementById('questions-1').style.animation='drop 1.5s ease';" value="Valider" />
+							<input id="valide" class="cta-start-form" onclick="getUserForm();" value="Valider" />
 						</form>
 					</div>
 
@@ -145,18 +145,18 @@
 							{ 
 								if(questions[key] != null && questions[key] != questions.qName && questions[key] != questions.qKey && questions.qMultiple == null && questions.qKey != 15) 
 								{ %> 
-									<input class="cta-select-answer" onclick="changeClass.call(this);addOneAnswer('<%= questions.qKey %>', '<%= questions[key] %>');document.getElementById('questions-<%= questions.qKey %>').style.display='none';document.getElementById('questions-<%= questions.qKey + 1 %>').style.display='flex';document.getElementById('questions-<%= questions.qKey + 1 %>').style.animation='drop 1.5s ease';" id="<%= key %>" value="<%= questions[key] %>" type="submit" />
+									<input class="cta-select-answer" onclick="addOneAnswer('<%= questions.qKey %>', '<%= questions[key] %>');document.getElementById('questions-<%= questions.qKey %>').style.display='none';document.getElementById('questions-<%= questions.qKey + 1 %>').style.display='flex';document.getElementById('questions-<%= questions.qKey + 1 %>').style.animation='drop 1.5s ease';" id="<%= key %>" value="<%= questions[key] %>" type="submit" />
 								<%} 
 								else if (questions[key] != null && questions[key] != questions.qName && questions[key] != questions.qKey && questions.qMultiple != null) 
 								{
-									if (questions[key] != questions.qMultiple) { %><input class="cta-select-answer" onclick="changeClass.call(this);addMultiAnswer('<%= questions.qKey %>', '<%= questions[key] %>');" id="<%= key %>" value="<%= questions[key] %>" type="submit" /> <%}
+									if (questions[key] != questions.qMultiple) { %><input class="cta-select-answer-multi" onclick="changeClass.call(this);addMultiAnswer('<%= questions.qKey %>', '<%= questions[key] %>');" id="<%= key %>" value="<%= questions[key] %>" type="submit" /> <%}
 								}
 								else if (questions.qKey == 15 && questions[key] != null && questions[key] != questions.qName && questions[key] != questions.qKey)
 								{ %>
-									<input class="cta-select-answer" onclick="changeClass.call(this);addOneAnswer('<%= questions.qKey %>', '<%= questions[key] %>');" id="<%= key %>" value="<%= questions[key] %>" type="submit" />
+									<input class="cta-select-answer" onclick="addOneAnswer('<%= questions.qKey %>', '<%= questions[key] %>');" id="<%= key %>" value="<%= questions[key] %>" type="submit" />
 								<%} 
 							}
-							if (questions.qMultiple != null) { %> <div class="cta"><input onclick="document.getElementById('questions-<%= questions.qKey %>').style.display='none';document.getElementById('questions-<%= questions.qKey + 1 %>').style.display='flex';document.getElementById('questions-<%= questions.qKey + 1 %>').style.animation='drop 1.5s ease';" class="cta-start center-start" type="submit" value="Valider" /></div> <% } %> 
+							if (questions.qMultiple != null) { %> <div class="cta"><input onclick="document.getElementById('questions-<%= questions.qKey %>').style.display='none';document.getElementById('questions-<%= questions.qKey + 1 %>').style.display='flex';document.getElementById('questions-<%= questions.qKey + 1 %>').style.animation='drop 1.5s ease';" class="cta-start-multiple" type="submit" value="Valider" /></div> <% } %> 
 						</div>
 					</div>
 					<% }); %>
@@ -174,38 +174,103 @@
 
 
 		<script>
+			function validate (input) {
+				if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+					if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+						return false;
+					}
+				}
+				else {
+					if($(input).val().trim() == ''){
+						return false;
+					}
+				}
+			}
+
+			function showValidate(input) 
+			{
+				var thisAlert = $(input).parent();
+		
+				$(thisAlert).addClass('alert-validate');
+		
+				$(thisAlert).append('<span class="btn-hide-validate">&#xf135;</span>')
+				$('.btn-hide-validate').each(function(){
+					$(this).on('click',function(){
+					   hideValidate(this);
+					});
+				});
+			}
+
+			function hideValidate(input) {
+				var thisAlert = $(input).parent();
+				$(thisAlert).removeClass('alert-validate');
+				$(thisAlert).find('.btn-hide-validate').remove();
+			}
+			
 			function changeClass () 
 			{
-				$(this).toggleClass('cta-start');
+				if ($(this).hasClass('cta-select-answer-multi-after'))
+				{
+					$(this).removeClass('cta-select-answer-multi-after').toggleClass('cta-select-answer-multi');
+				}
+				else
+				{
+					$(this).removeClass('cta-select-answer-multi').toggleClass('cta-select-answer-multi-after');
+				}
 			};
+			
 	
 			let userF = new Object;
 			
 			function getUserForm()
 			{
-				userF['prenom'] = document.getElementById('prenom').value;
-				userF['nom'] = document.getElementById('nom').value;
-				userF['homme'] = document.getElementById('homme').value;
-				userF['femme'] = document.getElementById('femme').value;
-				userF['autre'] = document.getElementById('autre').value;
-				userF['dateDeNaissance'] = document.getElementById('dateDeNaissance').value;
-				userF['email'] = document.getElementById('emailUser').value;
-				userF['message'] = document.getElementById('messageUser').value;
+				let emailInput = $('#emailUser');
 
-				console.log("User : ");
-				console.log(userF);
+				if (emailInput.val().length == 0 || validate(emailInput) == false)
+				{
+					showValidate(emailInput);
+
+					return false
+				}
+				else
+				{
+					userF['prenom'] = document.getElementById('prenom').value;
+					userF['nom'] = document.getElementById('nom').value;
+					userF['homme'] = document.getElementById('homme').checked;
+					userF['femme'] = document.getElementById('femme').checked;
+					userF['autre'] = document.getElementById('autre').checked;
+					userF['dateDeNaissance'] = document.getElementById('dateDeNaissance').value == new Date().toDateInputValue() ? null : document.getElementById('dateDeNaissance').value;
+					userF['email'] = document.getElementById('emailUser').value;
+					userF['message'] = document.getElementById('messageUser').value;
+
+					console.log(userF);
+
+					document.getElementById('userEndForm').style.display='none';
+					document.getElementById('questions-1').style.display='flex';
+					document.getElementById('questions-1').style.animation='drop 1.5s ease';
+
+					return true
+				}
 			};
 			
 			let score = new Object;
 	
 			function addOneAnswer(key, answer)
 			{
-				score[key] = answer;	
-	
-				console.log(score)
-	
-				if (key == 15)
+				if (key == 10 && score[9] === undefined)
 				{
+					score['9'] = null;
+
+					score[key] = answer;	
+					
+					console.log(score);
+				}
+				else if (key == 15)
+				{
+					score[key] = answer;	
+					
+					console.log(score);
+
 					let question = 'questions-'
 					let questions = question.concat(key)
 
@@ -229,6 +294,12 @@
 					document.getElementById(questions).style.display='none';
 					document.getElementById('endofForm').style.display='flex';
 					document.getElementById('endofForm').style.animation='drop 1.5s ease';
+				}
+				else
+				{
+					score[key] = answer;	
+	
+					console.log(score);
 				}
 			};
 	
