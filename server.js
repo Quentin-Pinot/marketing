@@ -103,7 +103,7 @@ app.post('/sendMail', (req, res) =>
         from: 'contact.fideltycard@gmail.com',
         to: req.body.email,
         subject: 'Merci de nous avoir contactés !',
-        text: 'Chère Madame/Cher Monsieur ' + req.body.name + ', \n \n Merci d\'avoir contacté Fidelity ! \n Laissez-nous prendre en compte demande et nous vous contacterons dans les plus brefs délais. \n \n \n Bien cordialement. \n \n L\'équipe Fidelity'
+        text: 'Chère Madame/Cher Monsieur ' + req.body.name + ', \n \n Merci d\'avoir contacté Fidelity ! \n Laissez-nous prendre en compte votre demande et nous vous recontacterons dans les plus brefs délais. \n \n \n Bien cordialement. \n \n L\'équipe Fidelity'
     }
 
     transporter.sendMail(mailOptions, (error, info) => 
