@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport(
 let d = new Date();
 let date = `${d.getDay()}-${d.getMonth()}-${d.getYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}: `;    
 
-/*
+
 const {
     PORT = 32222,
     PGHOST = "localhost",
@@ -32,10 +32,10 @@ const {
     SESS_SECRET = "raboule_le_fric",
     SESS_LIFETIME = 24 * 60 * 60 * 1000 // 24h
 } = process.env;
-*/
+
 // todo : CHANGER LE CONST PROCCES.ENV
 
-
+/*
 const {
     PORT = 8080,
     PGHOST = "ec2-34-192-173-173.compute-1.amazonaws.com",
@@ -47,7 +47,7 @@ const {
     SESS_SECRET = "raboule_le_fric",
     SESS_LIFETIME = 24 * 60 * 60 * 1000 // 24h
 } = process.env;
-
+*/
 
 const pool = new Pool(
     {
