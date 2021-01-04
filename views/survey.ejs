@@ -129,11 +129,11 @@
 								<input class="input100-email" type="email" id="emailUser" name="emailUser" placeholder="Email">
 								<span class="userEndForm-focus-input100"></span>
 							</div>
-		
+							<!--
 							<div class="userEndFormwrap-input100">
 								<textarea class="input100" id="messageUser" name="message" placeholder="Vous pouvez nous laisser un message ici si vous le souhaitez..."></textarea>
 								<span class="userEndForm-focus-input100"></span>
-							</div>
+							</div>-->
 							<input id="valide" class="cta-start-form" onclick="getUserForm();" value="Valider" />
 						</form>
 					</div>
@@ -245,7 +245,7 @@
 					userF['autre'] = document.getElementById('autre').checked;
 					userF['dateDeNaissance'] = document.getElementById('dateDeNaissance').value == new Date().toDateInputValue() ? null : document.getElementById('dateDeNaissance').value;
 					userF['email'] = document.getElementById('emailUser').value;
-					userF['message'] = document.getElementById('messageUser').value;
+					userF['message'] = null;
 
 					console.log(userF);
 
@@ -293,6 +293,11 @@
 						url: '/questionnaire',
 						type: "POST",
 						data: data
+					}).done(function (data){
+						setTimeout(function()
+						{
+							window.location.href = '/';
+						}, 2000);
 					});
 	
 					document.getElementById(questions).style.display='none';
