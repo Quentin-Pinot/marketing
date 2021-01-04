@@ -141,7 +141,7 @@
 					{ %>
 					<div class="questions" id="questions-<%= questions.qKey %>">
 						<div class="survey-q">
-							<h1>Question n°<%= questions.qKey %> / 15</h1>
+							<h1>Question n°<%= questions.qKey %> / 13</h1>
 							<h2><%= questions.qName %> </h2>
 							<br />
 							<% for(let key in questions) 
@@ -260,15 +260,15 @@
 	
 			function addOneAnswer(key, answer)
 			{
-				if (key == 10 && score[9] === undefined)
+				if (score[4] === undefined)
 				{
-					score['9'] = null;
+					score['4'] = null;
 
 					score[key] = answer;	
 					
 					console.log(score);
 				}
-				else if (key == 15)
+				else if (key == 13)
 				{
 					score[key] = answer;	
 					

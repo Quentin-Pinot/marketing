@@ -32,7 +32,6 @@ const {
     SESS_SECRET = "raboule_le_fric",
     SESS_LIFETIME = 24 * 60 * 60 * 1000 // 24h
 } = process.env;
-
 */
 // todo : CHANGER LE CONST PROCCES.ENV
 
@@ -196,7 +195,7 @@ app.post('/questionnaire', (req, respo) =>
                                 {
                                     console.log("Tour de boucle : " + i)
 
-                                    if (i != 9) 
+                                    if (i != 4) 
                                     {
                                         let queryNormal = "INSERT INTO answers(\"idUsers\", \"qKey\", \"answer1\") VALUES('" + idUser + "', '" + i + "', '" + answerUser.score[i-1] + "');"
 
@@ -208,7 +207,7 @@ app.post('/questionnaire', (req, respo) =>
                                     }
                                     else
                                     {
-                                        console.log("Nombre de reponse a la question 9 : " + answerUser.score[i-1].length);
+                                        console.log("Nombre de reponse a la question 4 : " + answerUser.score[i-1].length);
 
                                         let queryNotNormal = "INSERT INTO answers(\"idUsers\", \"qKey\"";
 
