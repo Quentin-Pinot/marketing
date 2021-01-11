@@ -94,8 +94,20 @@
 						<a href="/"><input class="cta-add" type="submit" value="Bientôt en vente..."/></a>
 					</div>
 				</div>
-				<div class="cover">
-					<img src="views/img/card.png" alt="card" />
+				<div class="testtest">
+					<div class="cover">
+						<img src="views/img/card.png" alt="card" id="card1" style="display:flex;"/>
+						<img src="views/img/card2.png" alt="card" id="card2" style="display:none;visibility:hidden;" />
+						<img src="views/img/card3.png" alt="card" id="card3" style="display:none;visibility:hidden;"/>
+					</div>
+
+					<div class="laptop-select">
+						<img src="views/img/arrow-left.svg" id="arrow-left" onclick="change(this.id)" />
+						<img src="views/img/dot-full.svg" id="dot1" onclick="change(this.id);" />
+						<img src="views/img/dot.svg" id="dot2" onclick="change(this.id);" />
+						<img src="views/img/dot.svg" id="dot3" onclick="change(this.id);" />
+						<img src="views/img/arrow-right.svg" id="arrow-right" onclick="change(this.id)" />
+					</div>
 				</div>
 			</section>
 	
@@ -103,6 +115,111 @@
 			<img class="medium-circle" src="views/img/mid-eclipse.svg" alt="" />
 			<img class="small-circle" src="views/img/small-eclipse.svg" alt="" />
 		</main>
+
+		<script type="text/javascript">
+			function change(id)
+			{
+				if (id == 'dot2')
+				{
+					document.getElementById('card1').style.display='none';
+					document.getElementById('card3').style.display='none';
+					document.getElementById('card2').style.display='flex';
+					document.getElementById('card2').style.visibility='visible';
+
+					document.getElementById(id).src="views/img/dot-full.svg";
+					document.getElementById('dot1').src="views/img/dot.svg";
+					document.getElementById('dot3').src="views/img/dot.svg";
+				}
+				else if (id == 'dot1')
+				{
+					document.getElementById('card2').style.display='none';
+					document.getElementById('card3').style.display='none';
+					document.getElementById('card1').style.display='flex';
+					document.getElementById('card1').style.visibility='visible';
+
+					document.getElementById(id).src="views/img/dot-full.svg";
+					document.getElementById('dot2').src="views/img/dot.svg";
+					document.getElementById('dot3').src="views/img/dot.svg";
+				}
+				else if  (id == 'dot3')
+				{
+					document.getElementById('card1').style.display='none';
+					document.getElementById('card2').style.display='none';
+					document.getElementById('card3').style.display='flex';
+					document.getElementById('card3').style.visibility='visible';
+
+					document.getElementById(id).src="views/img/dot-full.svg";
+					document.getElementById('dot1').src="views/img/dot.svg";
+					document.getElementById('dot2').src="views/img/dot.svg";
+				}
+				else if (id == 'arrow-left')
+				{
+					if (document.getElementById('card1').style.display == 'flex')
+					{
+						document.getElementById('card1').style.display='none';
+						document.getElementById('card3').style.display='flex';
+						document.getElementById('card3').style.visibility='visible';
+
+						document.getElementById('dot3').src="views/img/dot-full.svg";
+						document.getElementById('dot1').src="views/img/dot.svg";
+						document.getElementById('dot2').src="views/img/dot.svg";
+					}
+					else if (document.getElementById('card2').style.display == 'flex')
+					{
+						document.getElementById('card2').style.display='none';
+						document.getElementById('card1').style.display='flex';
+						document.getElementById('card1').style.visibility='visible';
+
+						document.getElementById('dot1').src="views/img/dot-full.svg";
+						document.getElementById('dot2').src="views/img/dot.svg";
+						document.getElementById('dot3').src="views/img/dot.svg";
+					}
+					else if (document.getElementById('card3').style.display == 'flex')
+					{
+						document.getElementById('card3').style.display='none';
+						document.getElementById('card2').style.display='flex';
+						document.getElementById('card2').style.visibility='visible';
+
+						document.getElementById('dot2').src="views/img/dot-full.svg";
+						document.getElementById('dot1').src="views/img/dot.svg";
+						document.getElementById('dot3').src="views/img/dot.svg";
+					}
+				}
+				else if (id == 'arrow-right')
+				{
+					if (document.getElementById('card1').style.display == 'flex')
+					{
+						document.getElementById('card1').style.display='none';
+						document.getElementById('card2').style.display='flex';
+						document.getElementById('card2').style.visibility='visible';
+
+						document.getElementById('dot2').src="views/img/dot-full.svg";
+						document.getElementById('dot1').src="views/img/dot.svg";
+						document.getElementById('dot3').src="views/img/dot.svg";
+					}
+					else if (document.getElementById('card2').style.display == 'flex')
+					{
+						document.getElementById('card2').style.display='none';
+						document.getElementById('card3').style.display='flex';
+						document.getElementById('card3').style.visibility='visible';
+
+						document.getElementById('dot3').src="views/img/dot-full.svg";
+						document.getElementById('dot2').src="views/img/dot.svg";
+						document.getElementById('dot1').src="views/img/dot.svg";
+					}
+					else if (document.getElementById('card3').style.display == 'flex')
+					{
+						document.getElementById('card3').style.display='none';
+						document.getElementById('card1').style.display='flex';
+						document.getElementById('card1').style.visibility='visible';
+
+						document.getElementById('dot1').src="views/img/dot-full.svg";
+						document.getElementById('dot2').src="views/img/dot.svg";
+						document.getElementById('dot3').src="views/img/dot.svg";
+					}
+				}
+			}
+		</script>
 	</body>
 
 	<script src="views/vendor/jquery/jquery-3.2.1.min.js"></script>

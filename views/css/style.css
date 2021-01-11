@@ -339,17 +339,40 @@ nav {
 	padding-top: 5px;
 }
 
-.cover {
-	flex: 1;
-	display: flex;
-	justify-content: center;
-	height: 60vh;
+.testtest
+{
+	/* float: right;*/
+	align-items: center;
+	text-align: center;
 }
+
+.cover {
+	/* flex: 1; 
+	display: flex;
+	position: relative; */
+	justify-content: center;
+	margin-bottom: 10%;
+}
+
 .cover img {
-	height: 100%;
+	height: 350px;
 	filter: drop-shadow(0px 5px 3px black);
 	animation: drop 1.5s ease;
 }
+
+
+.laptop-select {
+	align-items: center;
+	text-align: center;
+	margin-top: 5%;
+}
+
+.laptop-select img
+{
+	margin: 2.5%;
+	position: center;
+}
+
 
 .big-circle {
 	position: absolute;
@@ -372,14 +395,6 @@ nav {
 	bottom: 0%;
 	left: 20%;
 	z-index: -1;
-}
-
-.laptop-select {
-	width: 15%;
-	display: flex;
-	justify-content: space-around;
-	position: absolute;
-	right: 20%;
 }
 
 .container-contact100 {
@@ -611,6 +626,7 @@ nav {
 	-ms-box-shadow: 0 10px 30px 0px rgba(16, 163, 22, 0.5);
   }
 
+
   @media (max-width: 768px) {
 	.wrap-contact100 {
 	  padding: 72px 50px 25px 50px;
@@ -727,12 +743,13 @@ nav {
 	}
 }
 
+
+
 @media screen and (max-width: 1024px) {
 	.presentation {
 		flex-direction: column;
 	}
 	.introduction {
-		margin-top: 5vh;
 		text-align: center;
 	}
 
@@ -759,9 +776,15 @@ nav {
 		height: 35px;
 	}
 
+	.cover{
+		margin-top: 10%;
+		margin-bottom: 10%;
+		height: auto;
+		justify-content: center;
+	}
 	.cover img {
-		height: 90%;
-		height: 300px;
+		height: auto;
+		height: 200px;
 	}
 	.small-circle,
 	.medium-circle,
@@ -776,5 +799,10 @@ nav {
 
 	.nav-link {
 		font-size: 18px;
+	}
+
+	.laptop-select
+	{
+		height: 5px;
 	}
 }
