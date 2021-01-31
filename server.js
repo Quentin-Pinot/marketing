@@ -21,7 +21,6 @@ let d = new Date();
 let date = `${d.getDay()}-${d.getMonth()}-${d.getYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}: `;    
 
 
-
 const {
     PORT = 8080,
     PGHOST = "ec2-34-192-173-173.compute-1.amazonaws.com",
@@ -143,7 +142,7 @@ app.post('/questionnaire', (req, respo) =>
 
             let dateDeNaissance = answerUser.userF.dateDeNaissance == '' ? null : "'" + answerUser.userF.dateDeNaissance + "'";
 
-            let queryUser = "INSERT INTO users(\"idUsers\", \"surname\", \"name\", \"mail\", \"male\", \"woman\", \"other\", \"birthDate\", \"message\") VALUES('" + idUser + "', '" + answerUser.userF.prenom + "', '" + answerUser.userF.nom + "', '" + answerUser.userF.email + "', '" + answerUser.userF.homme + "', '" + answerUser.userF.femme + "', '" + answerUser.userF.autre + "', " + dateDeNaissance + ", '" + answerUser.userF.message + "');";
+            let queryUser = "INSERT INTO users(\"idUsers\", \"surname\", \"name\", \"mail\", \"male\", \"woman\", \"birthDate\") VALUES('" + idUser + "', '" + answerUser.userF.prenom + "', '" + answerUser.userF.nom + "', '" + answerUser.userF.email + "', '" + answerUser.userF.homme + "', '" + answerUser.userF.femme + "', " + dateDeNaissance + ");";
 
             console.log(queryUser);
 

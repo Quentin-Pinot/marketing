@@ -108,24 +108,25 @@
 								<input class="input100" type="text" id="nom" name="nom" placeholder="Nom">
 							</div>
 							
-							<div class="userEndFormwrap-input100-other">
+							<div class="userEndFormwrap-input100-other validate-input" data-validate="S'il vous plaît renseigner genre">
 								<input  type="checkbox" id="homme" name="homme">
 								<label for="homme" class = "userEnd-checkbox">Homme</label>
 								
 								<input type="checkbox" id="femme" name="femme">
 								<label for="femme" class = "userEnd-checkbox">Femme</label>
-		
+								<!--
 								<input type="checkbox" id="autre" name="autre">
 								<label for="autre" class = "userEnd-checkbox">Autre...</label>
+								-->
 							</div>
 		
-							<div class="userEndFormwrap-input100-other">
+							<div class="userEndFormwrap-input100-other validate-input" data-validate="S'il vous plaît renseigner votre date de naissance">
 								<label for="dateDeNaissance">Date de naissance : </label>
 								<input type="date" id="dateDeNaissance" name="trip-start" min="01-01-1900" max="31-12-3000" required="required">
 							</div>
 							
 							
-							<div class="userEndFormwrap-input100 validate-input" data-validate="S'il vous plait renseigner votre mail : example@mail.com">
+							<div class="userEndFormwrap-input100 validate-input" data-validate="S'il vous plaît renseigner votre mail : example@mail.com">
 								<input class="input100-email" type="email" id="emailUser" name="emailUser" placeholder="Email">
 								<span class="userEndForm-focus-input100"></span>
 							</div>
@@ -229,12 +230,29 @@
 			function getUserForm()
 			{
 				let emailInput = $('#emailUser');
+				let birthDateInput = $('#dateDeNaissance');
+				let woman = $('#femme');
+				let man = $('#homme');
 
-				if (emailInput.val().length == 0 || validate(emailInput) == false)
+
+				if (emailInput.val().length == 0 || validate(emailInput) == false || woman.is(":checked") == false && man.is(":checked") == false || birthDateInput.val() == new Date().toDateInputValue())
 				{
-					showValidate(emailInput);
+					if (emailInput.val().length == 0 || validate(emailInput) == false)
+					{
+						showValidate(emailInput);
+					}
 
-					return false
+					if (birthDateInput.val() == new Date().toDateInputValue())
+					{
+						showValidate(birthDateInput);
+					}
+
+					if(woman.is(":checked") == false && man.is(":checked") == false)
+					{
+						showValidate(man);
+					}
+
+					return false;
 				}
 				else
 				{
@@ -242,10 +260,10 @@
 					userF['nom'] = document.getElementById('nom').value;
 					userF['homme'] = document.getElementById('homme').checked;
 					userF['femme'] = document.getElementById('femme').checked;
-					userF['autre'] = document.getElementById('autre').checked;
+					// userF['autre'] = document.getElementById('autre').checked;
 					userF['dateDeNaissance'] = document.getElementById('dateDeNaissance').value == new Date().toDateInputValue() ? null : document.getElementById('dateDeNaissance').value;
 					userF['email'] = document.getElementById('emailUser').value;
-					userF['message'] = null;
+					// userF['message'] = null;
 
 					console.log(userF);
 
