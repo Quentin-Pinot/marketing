@@ -40,7 +40,8 @@ const pool = new Pool(
         host: PGHOST,
         database: PGDATABASE,
         password: PGPASSWORD,
-        port: PGPORT
+        port: PGPORT,
+        ssl: true
     }
 );
 
