@@ -41,7 +41,7 @@ const pool = new Pool(
         database: PGDATABASE,
         password: PGPASSWORD,
         port: PGPORT,
-        ssl: true
+        ssl: { rejectUnauthorized: false }
     }
 );
 
