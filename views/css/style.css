@@ -86,6 +86,14 @@ nav {
 	align-items: center;
 	position: relative;
 }
+
+.presentationprod
+{
+	flex: 1;
+	animation: drop 1.5s ease;
+	display: flex;
+}
+
 .instruction {
 	flex: 1;
 	animation: drop 1.5s ease;
