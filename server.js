@@ -5,6 +5,7 @@ let bodyParser = require("body-parser");
 //let engines = require('consolidate');
 const { Pool } = require("pg");
 const cons = require('consolidate');
+const config = require('./config');
 
 const transporter = nodemailer.createTransport(
     {
@@ -12,8 +13,8 @@ const transporter = nodemailer.createTransport(
         service: 'gmail',
         auth: 
         {
-          user: 'contact.fideltycard@gmail.com',
-          pass: 'lnjfjtxqancrtykk'
+          user: config.mail.user,
+          pass: config.mail.password
         }
     })
 
@@ -22,15 +23,17 @@ let date = `${d.getDay()}-${d.getMonth()}-${d.getYear()} ${d.getHours()}:${d.get
 
 
 const {
-    PORT = 8080,
-    PGHOST = "ec2-34-192-173-173.compute-1.amazonaws.com",
-    PGUSER = "dyjxucfevhnuan",
-    PGPASSWORD = "3bca1dba4582e00c9ab1b537d2cb61ba35a07340a2dde8dff825f458a33cfda8",
-    PGDATABASE = "d23qjb8d66t6ip",
-    PGPORT = "5432",
-    SESS_NAME = "sid",
-    SESS_SECRET = "raboule_le_fric",
-    SESS_LIFETIME = 24 * 60 * 60 * 1000 // 24h
+    PORT = config.web.PORT, // Port for the webserver
+    // postgresql
+    PGHOST = config.web.PGHOST,
+    PGUSER = config.web.PGUSER,
+    PGPASSWORD = config.web.PGPASSWORD,
+    PGDATABASE = config.web.PGDATABASE,
+    PGPORT = config.web.PGPORT,
+    // cookies
+    SESS_NAME = config.cookie.SESS_NAME,
+    SESS_SECRET = config.cookie.SESS_SECRET,
+    SESS_LIFETIME = config.cookie.SESS_LIFETIME
 } = process.env;
 
 
@@ -64,8 +67,8 @@ app.post('/sendMail', (req, res) =>
 {     
     let mailOptions = 
     {
-        from: 'contact.fideltycard@gmail.com',
-        to: 'contact.fideltycard@gmail.com',
+        from: config.mail.user,
+        to: config.mail.user,
         subject: req.body.name + ' - ' + req.body.email,
         text: req.body.message
     }
@@ -85,7 +88,7 @@ app.post('/sendMail', (req, res) =>
 
     mailOptions = 
     {
-        from: 'contact.fideltycard@gmail.com',
+        from: config.mail.user,
         to: req.body.email,
         subject: 'Merci de nous avoir contactés !',
         text: 'Chère Madame/Cher Monsieur ' + req.body.name + ', \n \n Merci d\'avoir contacté Fidelity ! \n Laissez-nous prendre en compte votre demande et nous vous recontacterons dans les plus brefs délais. \n \n \n Bien cordialement. \n \n L\'équipe Fidelity'
